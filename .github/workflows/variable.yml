@@ -1,8 +1,6 @@
 env:
   NIVEAU_WORKFLOW: "Je suis une variable de workflow"
-
 jobs:
-  runs-on: ubuntu-latest
   mon_job:
     runs-on: ubuntu-latest
     env:
