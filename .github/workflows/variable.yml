@@ -17,3 +17,4 @@ jobs:
           echo "$NIVEAU_ETAPE"
           echo VAR_4: ${{ vars.VAR_4 }}
           echo SECRET_1: ${{ secrets.SECRET_1 }}
+          echo test
