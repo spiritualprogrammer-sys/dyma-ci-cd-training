@@ -1,0 +1,12 @@
+name: run_shell_directory
+env:
+  NIVEAU_WORKFLOW: "run shell directory"
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Étape 1
+        run: |
+          pwd
+          echo $SHEL

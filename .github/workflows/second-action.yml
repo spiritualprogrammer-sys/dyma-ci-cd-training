@@ -1,5 +1,5 @@
 name: Ma première Action
-on: [push]
+on: [pull_request]
 jobs:
   Explorer-Actions-Github:
     runs-on: ubuntu-latest

@@ -1,7 +1,7 @@
 name: CI-CD pour nodejs
 on:
   push:
-    branches:
+    branches-ignore:
       - main
       - dev
 jobs:
@@ -13,13 +13,13 @@ jobs:
 
       - name: npm install dépendance
         run: npm install
-        
+
       - name: éxecute des tests
-        run : npm test
-  deploy: 
+        run: npm test
+  deploy:
     needs: build
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' && success() }}
     steps:
-      - name:  déploiement sur serveur de production
+      - name: déploiement sur serveur de production
         run: ./deploy.sh

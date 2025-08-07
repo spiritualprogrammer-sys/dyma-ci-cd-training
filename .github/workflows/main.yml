@@ -1,7 +1,7 @@
 name: hello-workflow
 env:
   NIVEAU_WORKFLOW: "Je suis une variable de workflow"
-on: [push]
+on: [pull_request]
 jobs:
   mon_job:
     runs-on: ubuntu-latest
