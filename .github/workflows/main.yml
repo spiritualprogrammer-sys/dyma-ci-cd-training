@@ -1,7 +1,20 @@
 name: hello-workflow
+env:
+  NIVEAU_WORKFLOW: "Je suis une variable de workflow"
 on: [push]
 jobs:
-  say-hello:
+  mon_job:
     runs-on: ubuntu-latest
+    env:
+      NIVEAU_JOB: "Je suis une variable de job"
     steps:
-      - run: echo "Hello world"
+      - name: Étape 1
+        env:
+          NIVEAU_ETAPE: "Je suis une variable d'étape"
+        run: |
+          echo "$NIVEAU_WORKFLOW"
+          echo "$NIVEAU_JOB"
+          echo "$NIVEAU_ETAPE"
+          echo VAR_4: ${{ vars.VAR_4 }}
+          echo SECRET_1: ${{ secrets.SECRET_1 }}
+          echo test
