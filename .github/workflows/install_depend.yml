@@ -1,5 +1,9 @@
 name: install package
 on: [push]
+defaults:
+  run:
+    shell: bash
+    working-directory: ./vite-project
 
 jobs:
   install:
@@ -11,4 +15,3 @@ jobs:
         uses: actions/checkout@v4
       - name: install dependences project
         run: npm install
-        working-directory: ./vite-project
