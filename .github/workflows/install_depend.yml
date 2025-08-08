@@ -9,6 +9,6 @@ jobs:
         uses: actions/setup-node@v4
       - name: fetch checkout
         uses: actions/checkout@v4
-      - name: install dependencess
+      - name: install dependences project
         run: npm install
         working-directory: ./vite-project
