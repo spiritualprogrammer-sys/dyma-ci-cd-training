@@ -9,11 +9,11 @@ jobs:
         uses: actions/setup-node@v4
       - name: fetch checkout
         uses: actions/checkout@v4
-      - name: configue cache
+      - name: configue caches
         uses: actions/cache@v3
         with:
           key: ${{ runner.os }} - ${{hashFiles('./vite-project/package-lock.json')}}
           path: ./vite-project/.npm
-      - name: install dependences project
+      - name: install dependences projects
         run: npm ci --cache .npm --prefer-offline
         working-directory: ./vite-project
