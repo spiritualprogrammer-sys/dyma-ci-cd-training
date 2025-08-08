@@ -1,0 +1,18 @@
+name: Exemple de matrice multi-dimensionnelle
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  example_matrix:
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Affichage de la version et de l'OS
+        run: |
+          echo "Version : ${{ matrix.version }} ${{ matrix.os }}"
