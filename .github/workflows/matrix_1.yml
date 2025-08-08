@@ -1,0 +1,16 @@
+name: Exemple de matrice simple
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  example_matrix:
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Affichage de la version
+        run: echo "Version en cours :"${{ matrix.version }}

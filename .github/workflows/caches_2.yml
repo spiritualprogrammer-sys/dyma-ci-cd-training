@@ -1,0 +1,23 @@
+name: Exemple de mise en cache avec npm
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: install nodejs
+        uses: actions/setup-node@v4
+      - name: Vérification du code
+        uses: actions/checkout@v4
+
+      - name: Mise en cache des dépendances npm
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Installation des dépendances
+        run: npm ci --cache .npm
+        working-directory: ./vite-project
