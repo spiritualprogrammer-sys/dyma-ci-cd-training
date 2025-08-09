@@ -1,0 +1,11 @@
+name: PREMIER ARTEFACT
+on: push
+jobs:
+  testartefact:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 123 > test.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: myfirst_artefact
+          path: ./test.txt
