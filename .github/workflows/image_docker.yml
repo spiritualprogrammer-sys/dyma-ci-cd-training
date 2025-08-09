@@ -6,7 +6,7 @@ jobs:
   test_docker:
     runs-on: ubuntu-latest
     container:
-      image: node-16
+      image: node:16
     steps:
       - run: ls -la
       - run: npm -v
