@@ -1,0 +1,19 @@
+name: Exemple de CI avec conteneur
+on:
+  push:
+    branches: [main]
+jobs:
+  exemple-job:
+    runs-on: ubuntu-latest
+    container:
+      image: node:18
+      env:
+        MA_VARIABLE: valeur
+      ports:
+        - 80
+      volumes:
+        - mon_volume:/point_de_montage
+      options: --cpus 1
+    steps:
+      - name: vérifie l'existence du fichier .dockerenv
+        run: (ls /.dockerenv && echo "fichier .dockerenv trouvé") || echo "fichier .dockerenv absent"

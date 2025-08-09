@@ -1,0 +1,20 @@
+# .github/workflows/exemple_mappage_ports.yml
+name: exemple de mappage de ports Redis
+on: push
+
+jobs:
+  mon_job:
+    runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+    steps:
+      - name: Installer redis-cli
+        run: sudo apt-get update && sudo apt-get install -y redis-tools
+
+      - name: vérifier la connexion à Redis sur le port mappé
+        run: |
+          echo "Vérification de la connexion à Redis sur le port 6379..."
+          redis-cli -h localhost -p 6379 ping

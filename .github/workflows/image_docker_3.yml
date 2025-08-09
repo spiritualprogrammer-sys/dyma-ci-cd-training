@@ -1,0 +1,16 @@
+name: exemple avec image Docker privée
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  mon-job:
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ secrets.DOCKERHUB_USERNAME }}/mon-image-privee:tag
+      credentials:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    steps:
+      - name: vérifie le fichier dockerenv
+        run: (ls /.dockerenv && echo fichier dockerenv trouvé) || (echo fichier dockerenv non trouvé)

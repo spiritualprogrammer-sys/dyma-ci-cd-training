@@ -1,0 +1,15 @@
+name: exemple avec Redis
+on: push
+
+jobs:
+  mon_job:
+    runs-on: ubuntu-latest
+    container: redis/redis-stack
+    services:
+      redis:
+        image: redis
+    steps:
+      - name: vérifier la connexion à Redis
+        run: |
+          echo "Vérification de la connexion à Redis..."
+          redis-cli -h redis ping
