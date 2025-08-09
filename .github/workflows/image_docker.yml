@@ -1,6 +1,6 @@
 name: Mon premier workflow avec docker
 
-on: push
+on: pull_request
 
 jobs:
   test_docker:
