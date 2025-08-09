@@ -1,5 +1,5 @@
 name: exemple avec Redis
-on: push
+on: pull_request
 
 jobs:
   mon_job:
