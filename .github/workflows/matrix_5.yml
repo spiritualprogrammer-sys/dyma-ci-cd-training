@@ -1,0 +1,20 @@
+name: gérer les échecs dans la matrice
+
+on: pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      fail-fast: true
+      matrix:
+        version: [6, 7, 8]
+        experimental: [false]
+        include:
+          - version: 9
+            experimental: true
+    steps:
+      - run: echo "version est ${{ matrix.version }}"
+      - run: echo "experimental est ${{ matrix.experimental }}"
+      - run: sleep 5

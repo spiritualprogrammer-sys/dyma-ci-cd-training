@@ -1,0 +1,23 @@
+name: exclure des configurations de matrice
+
+on: pull_request
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+        version: [12, 14, 16]
+        environment: [staging, production]
+        exclude:
+          - os: macos-latest
+            version: 12
+            environment: production
+          - os: windows-latest
+            version: 16
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: echo "os est ${{ matrix.os }}"
+      - run: echo "version est ${{ matrix.version }}"
+      - run: echo "environment est ${{ matrix.environment }}"
+      - run: sleep 5

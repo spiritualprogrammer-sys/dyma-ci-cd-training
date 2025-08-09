@@ -1,0 +1,40 @@
+name: Workflow avec permissions par défaut en lecture et un job en écriture
+on: [pull_request_target]
+
+permissions:
+  contents: read
+
+jobs:
+  read_only_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloner le dépôt
+        run: git clone https://github.com/votre/depot.git
+
+      - name: Exécuter des commandes en lecture seule
+        run: echo "Ces commandes peuvent seulement lire le contenu du dépôt."
+
+  another_read_only_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Autres commandes en lecture seule
+        run: echo "Ces commandes sont également en lecture seule, car les permissions par défaut s'appliquent à tout le workflow."
+
+  write_job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Cloner le dépôt
+        run: git clone https://github.com/votre/depot.git
+
+      - name: Faire des modifications
+        run: echo "modifications" >> fichier.txt
+
+      - name: Commit et push
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@example.com'
+          git add fichier.txt
+          git commit -m "Ajouter des modifications via GitHub Actions"
+          git push origin HEAD:nom_de_branche

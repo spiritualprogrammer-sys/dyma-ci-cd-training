@@ -1,0 +1,12 @@
+name: Mon premier workflow avec docker
+
+on: push
+
+jobs:
+  test_docker:
+    runs-on: ubuntu-latest
+    container:
+      image: node-16
+    steps:
+      - run: ls -la
+      - run: npm -v

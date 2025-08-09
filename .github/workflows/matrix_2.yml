@@ -3,7 +3,7 @@ name: Exemple de matrice multi-dimensionnelle
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   example_matrix:

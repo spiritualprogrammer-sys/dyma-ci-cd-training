@@ -1,0 +1,12 @@
+name: Modifier permissions du GITHUB_TOKEN
+on: [pull_request_target]
+
+jobs:
+  custom_permissions:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      checks: read
+    steps:
+      - name: Afficher les permissions
+        run: echo "Seules les permissions de lecture pour les actions et les vérifications sont activées."
