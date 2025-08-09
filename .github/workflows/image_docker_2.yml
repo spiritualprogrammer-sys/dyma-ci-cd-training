@@ -1,7 +1,7 @@
 name: Exemple de CI avec conteneur
 on:
   push:
-    branches: [main]
+    branches: [dev]
 jobs:
   exemple-job:
     runs-on: ubuntu-latest
