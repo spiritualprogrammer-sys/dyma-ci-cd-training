@@ -9,3 +9,17 @@ jobs:
         with:
           name: myfirst_artefact
           path: ./test.txt
+
+  downloadArrtefact:
+    needs: testartefact
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 123 > test.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: myfirst_artefact
+          path: ./ici
+      - run: |
+          ls
+          ls ./ici
+          cat ./ici/test.txt
